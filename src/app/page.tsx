@@ -97,7 +97,7 @@ export default function HomePage() {
       <form onSubmit={handleSubmit}>
         {/* Input fields for amount, date, type, and note */}
         <input
-          type="number"
+          type="text"
           value={amount}
           onChange={(e) => setAmount(Number(e.target.value))}
           placeholder="Amount"

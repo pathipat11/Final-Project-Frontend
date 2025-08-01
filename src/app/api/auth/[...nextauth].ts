@@ -1,6 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import User from '@/app/models/user'; // Ensure the path to your User model is correct
 
 export default NextAuth({
   providers: [
@@ -11,15 +11,20 @@ export default NextAuth({
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
-        // Replace this with your own logic to find the user
-        const user = { id: 1, name: 'User', email: 'user@example.com' };
-        if (user) return user;
-        return null;
+        const { username, password } = credentials;
+
+        // Check user in your database
+        const user = await User.findOne({ username });
+        if (!user || user.password !== password) {
+          return null; // Invalid credentials
+        }
+
+        return { id: user._id, name: user.username }; // Return user details
       },
     }),
   ],
   session: {
-    jwt: true,
+    strategy: 'jwt', // Use JWT for session management
   },
   pages: {
     signIn: '/auth/signin',

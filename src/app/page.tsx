@@ -10,6 +10,7 @@ interface PriceEntry {
   date: string;
   type: "income" | "expense";
   note?: string;
+  completed?: boolean; // Add completed status
   userId: string; // Assuming you handle user login and have userId available
 }
 
@@ -48,6 +49,7 @@ export default function HomePage() {
       type,
       note,
       userId: "exampleUserId", // Replace with real userId
+      completed: false, // Initialize completed status
     };
 
     const res = await fetch("/api/v1/price", {

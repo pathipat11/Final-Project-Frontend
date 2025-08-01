@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import Price from "@/models/price"; // Adjust path based on your setup
+import Price from "@/app/models/price"; // Adjust path based on your setup
 import { connectToDatabase } from "@/app/lib/mongodb";
 
 // GET method to calculate total income and expense

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import Price from "@/models/price";
+import Price from "@/app/models/price";
 import { connectToDatabase } from "@/app/lib/mongodb";
 
 // GET method for fetching chart data

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import Price from "@/models/price";
+import Price from "@/app/models/price";
 import { connectToDatabase } from "@/app/lib/mongodb";
 
 // POST method to add a new income/expense entry
